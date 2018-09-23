@@ -25,9 +25,9 @@ $(".object-button").on("click", function(e) {
 });
 
 //when card-body is clicked in image-area animate it if it's not animated. Otherwise don't animate it
-$(".image-area").on("click",".card", function(e) {
+$(".image-area").on("click",".card-img-top", function(e) {
 
-    var temp = $(this).find('.card-img-top').attr("src");
+    var temp = $(this).attr("src");
     console.log("image src on click: "+temp);  
 
     //let's see if we are displaying animated or still version
@@ -37,7 +37,7 @@ $(".image-area").on("click",".card", function(e) {
         console.log("still detected");
         temp = temp.replace("_s.gif", ".gif"); //replace still delimiter with normal delimiter for animated version
         console.log(temp);
-        $(this).find('.card-img-top').attr("src",temp);
+        $(this).attr("src",temp);
 
     }
     else {
@@ -45,8 +45,18 @@ $(".image-area").on("click",".card", function(e) {
         console.log("animated detected");
          temp =temp.replace(".gif", "_s.gif"); //replace still delimiter with normal delimiter for animated version
         console.log(temp);
-        $(this).find('.card-img-top').attr("src",temp);    
+        $(this).attr("src",temp);    
     }
+
+});
+
+//if favorite button is pressed add the card corresponding to the favorite button to the favorite area
+$(".image-area").on("click",".favorite", function(e) {
+    e.preventDefault();
+    console.log("favorite clicked");
+    var temp = $(this).find(".card")
+    console.log(temp);
+    $(".favorite-area").append(temp);
 
 });
 
@@ -109,8 +119,20 @@ $(".button-area").on("click",".objecty", function(e) {
             var cardBody = $("<div>");
             cardBody.addClass("card-body");
 
+            //generate favorite and download button 
+            var favorite = $("<button>");
+            var download = $("<button>");
+
+            favorite.text("favorite");
+            favorite.addClass("btn btn-secondary mr-1 mt-1 favorite")
+            download.text("download");
+            download.addClass("btn btn-secondary mt-1 download");
+
+
             //put together final card
             cardBody.append(cardList);
+            cardBody.append(favorite);
+            cardBody.append(download);
             card.append(img);
             card.append(cardBody);
 
