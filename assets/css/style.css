@@ -2,8 +2,28 @@ html,body {
     background-image:url("../images/background.jpg");
 }
 .container {
-    background-color:white;
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.5);
 }
 .objecty {
     font-size:20px;
+}
+.header-img {
+    height:100px;
+    width:auto;
+}
+.instructions {
+    background-color:white;
+}
+.button-area {
+    background-color:white;
+}
+.objecty {
+    background-color:#D3D3D3;
+}
+.text-muted {
+    color:black !important;
+}
+.image-area {
+    background-color:white;
 }
