@@ -1,4 +1,4 @@
-# GIPHYtasticAnimeEdition
+# GIPHYtastic! Anime Edition
 
 This web app is anime themed. On page load an initial list of anime characters is created as HTML button elements. When the user presses one of the buttons 10 images with that search tag are requested from the GIPHY API using the search endpoint. These images are then displayed in bootstrap cards with information such as GIF title and GIF rating.
 
