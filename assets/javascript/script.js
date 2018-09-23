@@ -1,13 +1,18 @@
 var objImage;
-var topics = ["naruto","kurosaki","inuyasha","kinomoto","yugioh","luffy","Midoriya"]
+var topics = ["naruto","kurosaki","inuyasha","kinomoto","yugioh","luffy","Midoriya"];
+
+//generates a button either at app start or dynamically from text field
+function buttonGen(object) {
+    var button = $("<button>");
+    button.attr("value",object);
+    button.addClass('objecty mr-1 ml-1 btn-secondary');
+    button.text(object);
+    $(".button-area").append(button);
+}
 
 //okay lets render initial buttons
 for(var i =0; i<topics.length;i++) {
-    var button = $("<button>");
-    button.attr("value",topics[i]);
-    button.addClass('objecty mr-1 ml-1');
-    button.text(topics[i]);
-    $(".button-area").append(button);
+    buttonGen(topics[i]); //button generate
 }
 
 //When text field is submitted generate a button! (using built in bootstrap to throw error if field empty)
@@ -15,12 +20,7 @@ $(".object-button").on("click", function(e) {
     e.preventDefault(); //DON'T REFRESH PAGE
     var object = $("#button-gen").val();    //get value in text field 
     if(object.length >0) {  //is it not empty
-        console.log(object);
-        var button = $("<button>");
-        button.addClass("objecty ml-1 mr-1");
-        button.text(object);
-        button.attr("value",object);
-        $(".button-area").append(button);
+        buttonGen(object);
         $("#button-gen").val("");
     }
 });
@@ -51,6 +51,7 @@ $(".button-area").on("click",".objecty", function(e) {
             // store URL of cat image into a var
             var imageUrl = response.data[i].images.original.url;    //location of gif in giphy
             var imgRating =response.data[i].rating;  //grab rating from JSON 
+            var imgTitle = response.data[i].title;
 
             console.log(imgRating);
             var card = $("<div>");  //div to hold card
@@ -62,15 +63,26 @@ $(".button-area").on("click",".objecty", function(e) {
             img.attr("src",imageUrl);
             img.attr("alt","giphy photo");
 
+            //gif info as list
+            var cardList = $("<ul>");
+            cardList.addClass("list-group list-group-flush");
+
+            var rating = $("<li>");
+            rating.attr("text",imgRating);
+            rating.addClass("list-group-item");
+
+            var title = $("<li>");
+            title.attr("text",imgTitle);
+            title.addClass("list-group-item");
+            
+            cardList.append(rating);
+            cardList.append(title);
+
             var cardBody = $("<div>");
             cardBody.addClass("card-body");
 
-            var cardText = $("<p>");
-            cardText.addClass("card-text");
-            cardText.text("Rating: "+imgRating);
-
             //put together card
-            cardBody.append(cardText);
+            cardBody.append(cardList);
             card.append(img);
             card.append(cardBody);
 

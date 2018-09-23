@@ -13,23 +13,25 @@
   </head>
   <body>
     <main class="container border mt-2">
-        <div class="row p-2">
+        <div class="row p-2 ">
             <h1><img src="assets/images/giphy.png" class="header-img">tastic! Anime Edition</h1>
         </div>
-        <div class="row p-2 instructions ml-1 mr-1 border">
+        <div class="row p-2 instructions ml-1 mr-1 border white-bg">
             <h2>Instructions</h2>
             <span>Type the name of anything into the box to the right. It will create a button that allows you generate 10 random images from GIPHY. Have fun!</span>
         </div>
-        <div class="row button-area ml-1 mr-1 p-2 mt-2 border"></div>
+        <div class="row button-area ml-1 mr-1 p-2 mt-2 border white-bg"></div>
 
-        <form>
-            <div class="form-group">
-                <label for="button-gen"></label>
-                <input type="text" class="form-control" id="button-gen" aria-describedby="button-help" placeholder="Enter anything!">
-                <small id="button-help" class="form-text text-muted ml-1">I'll generate a button after you press submit</small>
-            </div>
-            <button type="submit" class="btn btn-secondary object-button">Submit</button>
-        </form>
+        <div class="row ml-2 mb-2">
+            <form>
+                <div class="form-group">
+                    <label for="button-gen"></label>
+                    <input type="text" class="form-control" id="button-gen" aria-describedby="button-help" placeholder="Enter anything!" required>
+                    <small id="button-help" class="form-text text-muted ml-1">I'll generate a button after you press submit</small>
+                </div>
+                <button type="submit" class="btn btn-secondary object-button">Submit</button>
+            </form>
+        </div>
 
         <div class="row image-area ml-1 mr-1"></div> 
     </main>

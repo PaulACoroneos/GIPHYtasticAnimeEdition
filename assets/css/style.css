@@ -12,18 +12,10 @@ html,body {
     height:100px;
     width:auto;
 }
-.instructions {
+.white-bg {
     background-color:white;
 }
-.button-area {
-    background-color:white;
-}
-.objecty {
-    background-color:#D3D3D3;
-}
+
 .text-muted {
     color:black !important;
-}
-.image-area {
-    background-color:white;
 }
