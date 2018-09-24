@@ -12,8 +12,8 @@ html,body {
     height:100px;
     width:auto;
 }
-.white-bg {
-    background-color:white;
+.gray-bg {
+    background-color: #e9ecef;
 }
 
 .text-muted {
