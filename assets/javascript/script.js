@@ -51,25 +51,29 @@ $(".image-area").on("click",".card-img-top", function(e) {
 });
 
 //if favorite button is pressed add the card corresponding to the favorite button to the favorite area
-$(".image-area").on("click",".favorite", function(e) {
+$(".image-area").on("click",".card .favorite", function(e) {
     e.preventDefault();
     var favCard = $("<div>");
     favCard.addClass("card mb-1");
     favCard.attr("style","width: 18rem");
     console.log("favorite clicked");
-    var temp = $(".card").html();    //capture card info into var
+    var temp = $(this).closest('.card').html();    //capture card info into var
     console.log(temp);
     favCard.append(temp);
     $(".favorite-area").append(favCard);
 
 });
 
-//if download button is pressed download a copy of the photo
-$(".image-area").on("click",".download", function(e) {
-    e.preventDefault();
+// //if download button is pressed download a copy of the photo
+// $(".image-area").on("click",".card .download", function(e) {
+//     e.preventDefault();
+//     var favCard = $("<div>");
+//     favCard.addClass("card mb-1");
+//     favCard.attr("style","width: 18rem");
+//     console.log("download clicked");
+//     var temp = $(this).closest('.card-img-top').html();    //capture img data
 
-
-});
+// });
 
 //when generated object button is pressed
 $(".button-area").on("click",".objecty", function(e) {
