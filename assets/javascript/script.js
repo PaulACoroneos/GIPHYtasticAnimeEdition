@@ -43,7 +43,7 @@ $(".image-area").on("click",".card-img-top", function(e) {
     else {
         //replace img src with still version
         console.log("animated detected");
-         temp =temp.replace(".gif", "_s.gif"); //replace still delimiter with normal delimiter for animated version
+        temp =temp.replace(".gif", "_s.gif"); //replace still delimiter with normal delimiter for animated version
         console.log(temp);
         $(this).attr("src",temp);    
     }
@@ -54,7 +54,7 @@ $(".image-area").on("click",".card-img-top", function(e) {
 $(".image-area").on("click",".favorite", function(e) {
     e.preventDefault();
     console.log("favorite clicked");
-    var temp = $(this).find(".card")
+    var temp = $(this).find(".card").html();    //capture card info into var
     console.log(temp);
     $(".favorite-area").append(temp);
 
