@@ -77,6 +77,7 @@ $(".favorite-area").on("click",".card-img-top", function(e) {
 
 //if favorite button is pressed add the card corresponding to the favorite button to the favorite area
 $(".image-area").on("click",".card .favorite", function(e) {
+    var stored = JSON.parse(localStorage.getItem('favorites')); 
     e.preventDefault();
     var favCard = $("<div>");
     favCard.addClass("card mb-1");  
@@ -84,8 +85,8 @@ $(".image-area").on("click",".card .favorite", function(e) {
     var temp = $(this).closest('.card').html();    //capture card info into var
     favCard.append(temp);
     $(".favorite-area").append(favCard);
-    stored.push(temp.innerHTML);  //add to favorites array
-    console.log(temp.innerHTML);
+    stored.push(favCard.html());  //add to favorites array
+    console.log(favCard);
     localStorage.setItem("favorites", JSON.stringify(stored));   //update keyword with new card added
 
 
@@ -194,9 +195,20 @@ for(var i =0; i<topics.length;i++) {
 
 //check localstorage for presence of favorites and import to webpage
 var stored = JSON.parse(localStorage.getItem("favorites"));
+console.log(stored);
+    
 if(stored) {
     console.log(stored);
-    $(".favorite-area").push(stored);
+    //$(".favorite-area").push(stored);
+    for(var i=0;i<stored.length;i++) {
+        var card = $("<div>");  //div to hold card
+        card.addClass("card mb-1");
+        card.attr("style","width: 18rem");
+        card.append(stored[i]);
+        console.log(card);
+        $(".favorite-area").append(card);
+    
+    }
 }
 else {
     var stored = [];    //create empty array
